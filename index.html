@@ -8,6 +8,7 @@
         var calendarEl = document.getElementById('calendar');
 
         var calendar = new FullCalendar.Calendar(calendarEl, {
+          //plugins: [ 'dayGrid' ],
           initialView: 'dayGridMonth', //초기화하기?
 
           timeZone: 'local', //사용자의 브라우저 시간대로 설정
@@ -26,15 +27,8 @@
             //display: 'background' //하루종일 일정 있을때만 변환. 시간이 지정된 일자는 월에서 표기안됨
           },
 
-          
           expandRows: true,
           height: '100%',
-           /*//안먹힘
-          Object, default: {
-            prev: 'prev',
-            next: 'next',
-            today: '오늘로',
-          },*/
 
           //상단의 툴바
           headerToolbar: {
@@ -43,6 +37,15 @@
             center: 'title',
             right: 'dayGridMonth,listMonth'            
           },
+          
+          buttonText: { //툴바 한국어패치
+            prev : "지난달",
+            next : "다음달",
+            today : "오늘"
+            //month : "월별",
+            //list : "list"
+          },
+
           /*//안먹히는듯
           views: {
             locale:'ko',
@@ -78,7 +81,9 @@
             timeGrid: {
               dayMaxEventRows: 6 // adjust to 6 only for timeGridWeek/timeGridDay
             }
-          }
+          },
+
+          
 
         });
         calendar.render();
