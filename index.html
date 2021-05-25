@@ -40,6 +40,7 @@
 
         });
         calendar.render();
+        calendar.setOption('height', 500);//초기화 후 캘린더의 높이를 동적 세팅
       });
 
     </script>
@@ -53,14 +54,6 @@
         font-size: 14px;
       }
       
-      #calendar-container{
-        position: fixed;
-        padding-top: 1em;
-        padding-left: 1em;
-        padding-right: 1em;
-        padding-bottom: 1em;
-      }
-
       #calendar { /*이게 id인가???*/
         /*float: center;*/
         width: 100%;
@@ -76,12 +69,11 @@
       .fc-day-number.fc-sat.fc-past { color:#0000FF; }     /* 토요일 */
       .fc-day-number.fc-sun.fc-past { color:#FF0000; }    /* 일요일 */
 
+      
     </style>
   </head>
 
   <body>
-    <div id='calendar-container'>
       <div id='calendar'></div>
-    </div>
   </body>
 </html>
