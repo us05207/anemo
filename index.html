@@ -16,7 +16,9 @@
           googleCalendarApiKey: 'AIzaSyAJX_281hQzDB4cWMR0Dx-_3wY2z5g7BuE',//구글키         
           events: { 
             googleCalendarId: '1p8cl4kgf87ovr4entefhoaq34@group.calendar.google.com',
-            className: 'gcal-event' // an option!
+            className: 'gcal-event', // an option!
+            color: '#C4D79B',//이벤트 컬러 지정
+            //borderColor: '#edf5dc',
            },
 
           //상단의 툴바
@@ -25,6 +27,16 @@
             center: 'title',
             right: 'dayGridMonth,listMonth'
           },
+
+          //List views. '7pm' <이렇게 보이도록
+          //한국어 지원과 충돌됨
+          eventTimeFormat: { 
+            hour: 'numeric',
+            minute: '2-digit',
+            meridiem: 'short'
+          },
+
+          
 
           navLinks: false, //달력상의 날짜를 클릭할 수 있는지 여부
           eventLimit: true, //달력상에 셀 크기보다 많은 이벤트가 등록되어 있는 경우 more로 표기(default: false)
@@ -43,7 +55,7 @@
         });
         calendar.render();
         calendar.setOption('height', 700);//초기화 후 캘린더의 높이를 동적 세팅
-        calendar.setOption('locale', 'ko');//한글화
+        //calendar.setOption('locale', 'ko');//한글화
       });
 
     </script>
