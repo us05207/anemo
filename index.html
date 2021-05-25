@@ -18,14 +18,20 @@
             googleCalendarId: '1p8cl4kgf87ovr4entefhoaq34@group.calendar.google.com',
             className: 'gcal-event', // an option!
             color: '#C4D79B',//이벤트 컬러 지정
-            //borderColor: '#edf5dc',
-           },
+            eventDisplay:'block'
+            
+            //,backgroundColor: '#edf5dc',
+            //display: 'background' //하루종일 일정 있을때만 변환. 시간이 지정된 일자는 월에서 표기안됨
+          },
+
+           
 
           //상단의 툴바
           headerToolbar: {
             left: 'prev,next, today',
             center: 'title',
             right: 'dayGridMonth,listMonth'
+            
           },
 
           //List views. '7pm' <이렇게 보이도록
@@ -84,7 +90,11 @@
       .fc-day-number.fc-sat.fc-past { color:#0000FF; }     /* 토요일 */
       .fc-day-number.fc-sun.fc-past { color:#FF0000; }    /* 일요일 */
 
-      
+      :root{
+        --fc-button-bg-color :  #c2d1a3 ; /*툴바 버튼 컬러*/
+        --fc-button-active-bg-color: #7c8f57; /*툴바 선택된 버튼 컬러*/
+      }
+
     </style>
   </head>
 
