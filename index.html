@@ -10,7 +10,9 @@
         var calendar = new FullCalendar.Calendar(calendarEl, {
           initialView: 'dayGridMonth', //초기화하기?
 
-          //locale: 'ko', //한국화
+          timeZone: 'local', //사용자의 브라우저 시간대로 설정
+          //timeZone: 'KST', //한국시간대 설정
+          //locale: 'ko', //한국화 //영미권은 'en'
 
           //구글캘린더 연동
           googleCalendarApiKey: 'AIzaSyAJX_281hQzDB4cWMR0Dx-_3wY2z5g7BuE',//구글키         
@@ -24,15 +26,33 @@
             //display: 'background' //하루종일 일정 있을때만 변환. 시간이 지정된 일자는 월에서 표기안됨
           },
 
-           
+          
+          expandRows: true,
+          height: '100%',
+           /*//안먹힘
+          Object, default: {
+            prev: 'prev',
+            next: 'next',
+            today: '오늘로',
+          },*/
 
           //상단의 툴바
           headerToolbar: {
-            left: 'prev,next, today',
+            //locale: 'ko',
+            left: 'prev,next today',
             center: 'title',
-            right: 'dayGridMonth,listMonth'
-            
+            right: 'dayGridMonth,listMonth'            
           },
+          /*//안먹히는듯
+          views: {
+            locale:'ko',
+            dayGridMonth: { // name of view
+              titleFormat: { year: 'numeric', month: '2-digit', day: '2-digit' }
+              // other view-specific options here
+              
+            }
+          },
+          */
 
           //List views. '7pm' <이렇게 보이도록
           //한국어 지원과 충돌됨
@@ -42,14 +62,16 @@
             meridiem: 'short'
           },
 
-          
+          /*//이건 무슨 메소드지
+          eventClick: function(calEvent, jsEvent, view){
+            openModal(calEvent);
+          },*/
 
           navLinks: false, //달력상의 날짜를 클릭할 수 있는지 여부
           eventLimit: true, //달력상에 셀 크기보다 많은 이벤트가 등록되어 있는 경우 more로 표기(default: false)
           selectable: true,
           dayMaxEvents: true, //너무 많은 이벤트가 있을 때 "more" 링크를 허락한다
 
-         
           dayMaxEventRows: true, // for all non-TimeGrid views
           
           views: {
@@ -93,6 +115,8 @@
       :root{
         --fc-button-bg-color :  #c2d1a3 ; /*툴바 버튼 컬러*/
         --fc-button-active-bg-color: #7c8f57; /*툴바 선택된 버튼 컬러*/
+        --fc-today-bg-color: rgba(196, 215, 155, 0.25);/*오늘 컬러*/
+
       }
 
     </style>
