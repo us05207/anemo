@@ -3,6 +3,11 @@
     <meta charset='utf-8' />
     <link href='fullcalendar.main.css' rel='stylesheet' />
     <script src='fullcalendar.main.js'></script>
+
+    <!--아래 두개는 tippy 관련된 스크립트-->
+    <script src="https://unpkg.com/@popperjs/core@2"></script>
+    <script src="https://unpkg.com/tippy.js@6"></script>
+    
     <script>
       document.addEventListener('DOMContentLoaded', function() {
         var calendarEl = document.getElementById('calendar');
@@ -21,11 +26,32 @@
             googleCalendarId: '1p8cl4kgf87ovr4entefhoaq34@group.calendar.google.com',
             className: 'gcal-event', // an option!
             color: '#C4D79B',//이벤트 컬러 지정
-            eventDisplay:'block'
+            eventDisplay:'block',
+            //overlap: true,
             
+
+          eventDidMount: function(info){
+            tippy(info.el, {
+              content: info.event.extendedProps.description, //이벤트 디스크립션을 툴팁으로 가져옴
+            });
+          },
+
+            eventMouseEnter: function(info) { 
+              tippy(info.el, {
+              content:"ksljd"
+            });
+
+            //alert('Event: ' + info.event.title);
+            //alert('Coordinates: ' + info.jsEvent.pageX + ',' + info.jsEvent.pageY);
+            //alert('View: ' + info.view.type);
+            // change the border color just for fun
+            //info.el.style.borderColor = 'red';
+          }
+
             //,backgroundColor: '#edf5dc',
             //display: 'background' //하루종일 일정 있을때만 변환. 시간이 지정된 일자는 월에서 표기안됨
           },
+
 
           expandRows: true,
           height: '100%',
@@ -45,6 +71,8 @@
             //month : "월별",
             //list : "list"
           },
+          
+          
 
           /*//안먹히는듯
           views: {
@@ -85,10 +113,23 @@
 
           
 
+
         });
         calendar.render();
         calendar.setOption('height', 700);//초기화 후 캘린더의 높이를 동적 세팅
         //calendar.setOption('locale', 'ko');//한글화
+
+
+        tippy('#example', {
+          content: "success",
+          placement: 'right',
+          arrow: true,
+          arrowType: 'short',
+          animation: 'shift-away-subtle',
+          Interactivity: true,
+          //followCursor: 'initial'
+        })
+
       });
 
     </script>
@@ -103,6 +144,7 @@
       }
       
       #calendar { /*이게 id인가???*/
+        background: rgba(246, 255, 229, 0.247); /*캘린더 색상*/
         /*float: center;*/
         width: 100%;
         margin: 0 auto;
@@ -113,6 +155,9 @@
         padding-left: 1em;
         padding-right: 1em;
       }
+
+
+
 
       .fc-day-number.fc-sat.fc-past { color:#0000FF; }     /* 토요일 */
       .fc-day-number.fc-sun.fc-past { color:#FF0000; }    /* 일요일 */
@@ -128,6 +173,9 @@
   </head>
 
   <body>
+    <!--<div>
+      <button id="example">예제용</button>
+    </div>-->
       <div id='calendar'></div>
   </body>
 </html>
