@@ -8,7 +8,7 @@
     <script src="https://unpkg.com/@popperjs/core@2"></script>
     <script src="https://unpkg.com/tippy.js@6"></script>
     
-    <script>
+    <script>/*js*/
       document.addEventListener('DOMContentLoaded', function() {
         var calendarEl = document.getElementById('calendar');
 
@@ -30,9 +30,11 @@
             //overlap: true,
             
 
+
+
           eventDidMount: function(info){
             tippy(info.el, {
-              content: info.event.extendedProps.description, //이벤트 디스크립션을 툴팁으로 가져옴
+              content: fc.event-title, //이벤트 디스크립션을 툴팁으로 가져옴
             });
           },
 
@@ -72,19 +74,15 @@
             //list : "list"
           },
           
-          
-
           /*//안먹히는듯
           views: {
             locale:'ko',
             dayGridMonth: { // name of view
               titleFormat: { year: 'numeric', month: '2-digit', day: '2-digit' }
               // other view-specific options here
-              
             }
           },
           */
-
           //List views. '7pm' <이렇게 보이도록
           //한국어 지원과 충돌됨
           eventTimeFormat: { 
@@ -93,6 +91,13 @@
             meridiem: 'short'
           },
 
+          eventMouseEnter: function(info) {
+            tippy('#fc-daygrid-event', {
+              content: fc.event-title
+              })
+            // change the border color just for fun
+            info.el.style.borderColor = 'red';
+          },
           /*//이건 무슨 메소드지
           eventClick: function(calEvent, jsEvent, view){
             openModal(calEvent);
@@ -110,11 +115,7 @@
               dayMaxEventRows: 6 // adjust to 6 only for timeGridWeek/timeGridDay
             }
           },
-
-          
-
-
-        });
+        });//var calendar = new FullCalendar.Calendar(calendarEl, 끝
         calendar.render();
         calendar.setOption('height', 700);//초기화 후 캘린더의 높이를 동적 세팅
         //calendar.setOption('locale', 'ko');//한글화
@@ -131,19 +132,18 @@
         })
 
       });
-
+      tippy('#gcal-event', {
+          content: 'fc.event-title'
+        })
     </script>
     
-    <style>
+    <style>/*CSS*/
       body {
         /*overflow: hidden;*/
         margin: 40px 10px;
         padding: 0;
         font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
         font-size: 14px;
-
-        
-      
       }
       
       #calendar { /*이게 id인가???*/
@@ -152,7 +152,12 @@
         width: 100%;
         margin: 0 auto;
       }
-      
+
+      #fc-daygrid-event {
+          z-index: 6;
+          margin-top: 1px;
+      }
+
       .fc-daygrid-day.fc-day.fc-day-sat { color:#3333c9; } /* 토요일 */
       .fc-daygrid-day.fc-day.fc-day-sun { color:#c50b0b; } /* 일요일 */
 
@@ -164,6 +169,18 @@
 
       .fc-col-header { background-color: #c2d1a3;} /*이친구 만져야함*/
       
+
+      .fc-daygrid-event{
+        pointer-events: none; /*클릭 방지*/
+        /*cursor: default;*/
+      }
+
+      /*dot event도 all-day처럼*/
+      .fc-daygrid-event.fc-daygrid-dot-event{background-color: #C4D79B;}
+
+      /*이거 안먹힌다 아마 하이퍼링크 문제같음*/
+      .fc-event-title{color:'white';}
+
       :root{
         --fc-button-bg-color :  #c2d1a3 ; /*툴바 버튼 컬러*/
         --fc-button-hover-bg-color: #9bb16f ; /*툴바 버튼 위에 갖다댔을 때 컬러*/
