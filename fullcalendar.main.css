@@ -6,15 +6,6 @@
   cursor: not-allowed;
 }
 
-/*
-.fc-sun {  color: red !important;}
-.fc-sat{  color: blue !important;}
-*/
-
-  /*.fc-day-number.fc-sat.fc-past { color:#0000FF; } */    /* 토요일 */
-  /*.fc-day-number.fc-sun.fc-past { color:#FF0000; }*/    /* 일요일 */
-
-
 .fc-unselectable {
   -webkit-user-select: none;
      -moz-user-select: none;
@@ -511,9 +502,8 @@ a.fc-event:hover {
     position: absolute;
     z-index: 4;
   }
-.fc-event:hover, /* MOUSE */
+.fc-event:hover{} /* MOUSE */
 .fc-event-selected { /* TOUCH */
-
 }
 .fc-event:hover .fc-event-resizer, .fc-event-selected .fc-event-resizer {
     display: block;
@@ -681,6 +671,7 @@ A HORIZONTAL event
     padding: 3px 4px;
   }
 .fc .fc-popover-title {
+  
     margin: 0 2px;
   }
 .fc .fc-popover-close {
@@ -725,6 +716,7 @@ A HORIZONTAL event
       background-color: var(--fc-today-bg-color, rgba(255, 220, 40, 0.15));
     }
 .fc .fc-daygrid-day-frame {
+  
     position: relative;
     min-height: 100%; /* seems to work better than `height` because sets height after rows/cells naturally do it */
   }
@@ -733,7 +725,7 @@ A HORIZONTAL event
   /* cell top */
 
 }
-.fc .fc-daygrid-day-top {
+.fc .fc-daygrid-day-top { /*날짜 표기되는 곳*/
     display: flex;
     flex-direction: row-reverse;
   }
