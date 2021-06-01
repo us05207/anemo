@@ -29,22 +29,7 @@
             eventDisplay:'block',
             //overlap: true,
 
-            eventMouseEnter: function(info) { 
-              tippy(info.el, {
-              content:"ksljd"
-            });
-
-            //alert('Event: ' + info.event.title);
-            //alert('Coordinates: ' + info.jsEvent.pageX + ',' + info.jsEvent.pageY);
-            //alert('View: ' + info.view.type);
-            // change the border color just for fun
-            //info.el.style.borderColor = 'red';
-          } /*구글캘린더 연동 끝*/
-
-            //,backgroundColor: '#edf5dc',
-            //display: 'background' //하루종일 일정 있을때만 변환. 시간이 지정된 일자는 월에서 표기안됨
-          },
-
+          },/*구글캘린더 연동 끝*/
 
           expandRows: true,
           height: '100%',
@@ -61,8 +46,6 @@
             prev : "지난달",
             next : "다음달",
             today : "오늘"
-            //month : "월별",
-            //list : "list"
           },
           
           /*//안먹히는듯
@@ -98,7 +81,6 @@
           eventLimit: true, //달력상에 셀 크기보다 많은 이벤트가 등록되어 있는 경우 more로 표기(default: false)
           selectable: true,
           dayMaxEvents: true, //너무 많은 이벤트가 있을 때 "more" 링크를 허락한다
-
           dayMaxEventRows: true, // for all non-TimeGrid views
           
           views: {
@@ -107,14 +89,7 @@
             }
           },
 
-          eventMouseEnter: function(info) {
-            tippy('#calendar',{
-              content: "qwodj"
-            })
-          }
-
         });//var calendar = new FullCalendar.Calendar(calendarEl, 끝
-        
         
         calendar.render();
         calendar.setOption('height', 700);//초기화 후 캘린더의 높이를 동적 세팅
@@ -130,20 +105,14 @@
           Interactivity: true,
           //followCursor: 'initial'
         })
+        tippy('$dayevent',{
+          content: "weojifw"
+        })
         
       });//끝:document.addEventListener('DOMContentLoaded', function()
 
-      
-
-      calendar.addEventListener('eventMouseEnter', 
-          tippy('#eventMouseEnter',{
-            content: "ㅇ말ㅈㄷ"
-          })
-        )
-
-      tippy('#gcal-event', {
-          content: 'fc.event-title'
-        })
+      function Click(){
+      $("fc-daygrid-event").attr('id','dayevent');}
     </script>
     
     <style>/*CSS*/
@@ -156,9 +125,9 @@
       }
       
       #calendar { /*이게 id인가???*/
-        /*background: rgba(246, 255, 229, 0.247); *//*캘린더 색상*/
         /*float: center;*/
         width: 100%;
+        height: 100%;
         margin: 0 auto;
       }
 
@@ -178,10 +147,10 @@
 
       .fc-col-header { background-color: #c2d1a3;} /*이친구 만져야함*/
       
-
       .fc-daygrid-event{
         pointer-events: none; /*클릭 방지*/
         /*cursor: default;*/
+        color: 'white';
       }
 
       /*dot event도 all-day처럼*/
@@ -189,6 +158,9 @@
 
       /*이거 안먹힌다 아마 하이퍼링크 문제같음*/
       .fc-event-title{color:'white';}
+      .fc-daygrid-event-dot{ display: none; }
+      .fc-event-time{padding-left: 4px;}
+      .fc-event-time,.fc-event-title{color:'white';}
 
       :root{
         --fc-button-bg-color :  #c2d1a3 ; /*툴바 버튼 컬러*/
