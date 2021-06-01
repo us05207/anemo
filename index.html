@@ -28,15 +28,6 @@
             color: '#C4D79B',//이벤트 컬러 지정
             eventDisplay:'block',
             //overlap: true,
-            
-
-
-
-          eventDidMount: function(info){
-            tippy(info.el, {
-              content: fc.event-title, //이벤트 디스크립션을 툴팁으로 가져옴
-            });
-          },
 
             eventMouseEnter: function(info) { 
               tippy(info.el, {
@@ -48,7 +39,7 @@
             //alert('View: ' + info.view.type);
             // change the border color just for fun
             //info.el.style.borderColor = 'red';
-          }
+          } /*구글캘린더 연동 끝*/
 
             //,backgroundColor: '#edf5dc',
             //display: 'background' //하루종일 일정 있을때만 변환. 시간이 지정된 일자는 월에서 표기안됨
@@ -115,7 +106,16 @@
               dayMaxEventRows: 6 // adjust to 6 only for timeGridWeek/timeGridDay
             }
           },
+
+          eventMouseEnter: function(info) {
+            tippy('#calendar',{
+              content: "qwodj"
+            })
+          }
+
         });//var calendar = new FullCalendar.Calendar(calendarEl, 끝
+        
+        
         calendar.render();
         calendar.setOption('height', 700);//초기화 후 캘린더의 높이를 동적 세팅
         //calendar.setOption('locale', 'ko');//한글화
@@ -130,8 +130,17 @@
           Interactivity: true,
           //followCursor: 'initial'
         })
+        
+      });//끝:document.addEventListener('DOMContentLoaded', function()
 
-      });
+      
+
+      calendar.addEventListener('eventMouseEnter', 
+          tippy('#eventMouseEnter',{
+            content: "ㅇ말ㅈㄷ"
+          })
+        )
+
       tippy('#gcal-event', {
           content: 'fc.event-title'
         })
@@ -192,6 +201,9 @@
   </head>
 
   <body>
+    <div>
+      <button id="example">예제용</button>
+    </div>
       <div id='calendar'></div>
   </body>
 </html>
