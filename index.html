@@ -157,10 +157,13 @@
       .fc-daygrid-event.fc-daygrid-dot-event{background-color: #C4D79B;}
 
       /*이거 안먹힌다 아마 하이퍼링크 문제같음*/
-      .fc-event-title{color:'white';}
+      .fc-daygrid-event:link {color: white}
       .fc-daygrid-event-dot{ display: none; }
-      .fc-event-time{padding-left: 4px;}
-      .fc-event-time,.fc-event-title{color:'white';}
+      .fc-event-time{
+        padding-left: 4px;
+        font-weight: bold;
+      }
+      .fc-event-title{font-weight: normal;}
 
       :root{
         --fc-button-bg-color :  #c2d1a3 ; /*툴바 버튼 컬러*/
@@ -168,6 +171,8 @@
         --fc-button-active-bg-color: #75884f; /*툴바 선택된 버튼 컬러*/
         --fc-today-bg-color: rgba(196, 215, 155, 0.25);/*오늘 컬러*/
       }
+
+
 
     </style>
   </head>
