@@ -37,9 +37,9 @@
           //상단의 툴바
           headerToolbar: {
             //locale: 'ko',
-            left: 'prev,next today',
+            left: 'prev,next',
             center: 'title',
-            right: 'dayGridMonth,listMonth'            
+            right: 'today'
           },
           
           buttonText: { //툴바 한국어패치
@@ -57,8 +57,7 @@
             }
           },
           */
-          //List views. '7pm' <이렇게 보이도록
-          //한국어 지원과 충돌됨
+          //List views. '7pm' <이렇게 보이도록 //한국어 지원과 충돌됨
           eventTimeFormat: { 
             hour: 'numeric',
             minute: '2-digit',
@@ -92,7 +91,7 @@
         });//var calendar = new FullCalendar.Calendar(calendarEl, 끝
         
         calendar.render();
-        calendar.setOption('height', 700);//초기화 후 캘린더의 높이를 동적 세팅
+        calendar.setOption('height', 650);//초기화 후 캘린더의 높이를 동적 세팅
         //calendar.setOption('locale', 'ko');//한글화
 
         //tippy 예제 코드
@@ -109,6 +108,7 @@
           content: "weojifw"
         })
         
+
       });//끝:document.addEventListener('DOMContentLoaded', function()
 
       function Click(){
@@ -156,14 +156,16 @@
       /*dot event도 all-day처럼*/
       .fc-daygrid-event.fc-daygrid-dot-event{background-color: #C4D79B;}
 
-      /*이거 안먹힌다 아마 하이퍼링크 문제같음*/
+      /*하이퍼링크 글자색 변경*/
       .fc-daygrid-event:link {color: white}
+      .fc-daygrid-event:visited {color: white}
+
       .fc-daygrid-event-dot{ display: none; }
       .fc-event-time{
         padding-left: 4px;
-        font-weight: bold;
+        font-weight: normal;
       }
-      .fc-event-title{font-weight: normal;}
+
 
       :root{
         --fc-button-bg-color :  #c2d1a3 ; /*툴바 버튼 컬러*/
@@ -178,9 +180,9 @@
   </head>
 
   <body>
-    <div>
+<!--    <div>
       <button id="example">예제용</button>
-    </div>
+    </div>-->
       <div id='calendar'></div>
   </body>
 </html>
