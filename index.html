@@ -1,6 +1,7 @@
 <html lang='ko'>
   <head>
     <meta charset='utf-8' />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='fullcalendar.main.css' rel='stylesheet' />
     <script src='fullcalendar.main.js'></script>
 
@@ -15,7 +16,7 @@
         var calendar = new FullCalendar.Calendar(calendarEl, {
           //plugins: [ 'dayGrid' ],
           initialView: 'dayGridMonth', //초기화하기?
-
+          
           timeZone: 'local', //사용자의 브라우저 시간대로 설정
           //timeZone: 'KST', //한국시간대 설정
           //locale: 'ko', //한국화 //영미권은 'en'
@@ -65,16 +66,12 @@
           },
 
           eventMouseEnter: function(info) {
-            tippy('#fc-daygrid-event', {
-              content: fc.event-title
+            tippy('.fc-daygrid-event', {
+              content: 'tooltip'
               })
             // change the border color just for fun
             info.el.style.borderColor = 'red';
           },
-          /*//이건 무슨 메소드지
-          eventClick: function(calEvent, jsEvent, view){
-            openModal(calEvent);
-          },*/
 
           navLinks: false, //달력상의 날짜를 클릭할 수 있는지 여부
           eventLimit: true, //달력상에 셀 크기보다 많은 이벤트가 등록되어 있는 경우 more로 표기(default: false)
@@ -97,24 +94,25 @@
         //tippy 예제 코드
         tippy('#example', {
           content: "success",
-          placement: 'right',
+          /*placement: 'right',
           arrow: true,
           arrowType: 'short',
           animation: 'shift-away-subtle',
-          Interactivity: true,
+          Interactivity: true,*/
           //followCursor: 'initial'
         })
-        tippy('$dayevent',{
-          content: "weojifw"
-        })
         
+        tippy('.fc-daygrid-event',{content:'tooltip'});
+        $('.fc-daygrid-event').attr('id','dayevent');
+
 
       });//끝:document.addEventListener('DOMContentLoaded', function()
 
-      function Click(){
-      $(".fc-daygrid-event").attr('id','dayevent');}
     </script>
     
+<!-- ========================================================================= -->
+
+
     <style>/*CSS*/
       body {
         /*overflow: hidden;*/
@@ -127,7 +125,7 @@
       #calendar { /*이게 id인가???*/
         /*float: center;*/
         width: 100%;
-        height: 100%;
+        height: 600px;
         margin: 0 auto;
       }
 
@@ -183,9 +181,9 @@
   </head>
 
   <body>
-<!--    <div>
+    <div>
       <button id="example">예제용</button>
-    </div>-->
+    </div>
       <div id='calendar'></div>
   </body>
 </html>
