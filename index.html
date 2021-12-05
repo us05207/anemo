@@ -3,6 +3,7 @@
     <meta charset='utf-8' />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href='fullcalendar.main.css' rel='stylesheet' />
+    <link href='calendarceco.css' rel='stylesheet' />
     <script src='fullcalendar.main.js'></script>
 
     <!--아래 두개는 tippy 관련된 스크립트-->
@@ -110,74 +111,6 @@
 
     </script>
     
-<!-- ========================================================================= -->
-
-
-    <style>/*CSS*/
-      body {
-        /*overflow: hidden;*/
-        margin: 40px 10px;
-        padding: 0;
-        font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
-        font-size: 14px;
-      }
-      
-      #calendar { /*이게 id인가???*/
-        /*float: center;*/
-        width: 100%;
-        height: auto;
-        margin: 0 auto;
-      }
-
-      #fc-daygrid-event {
-          z-index: 6;
-          margin-top: 1px;
-      }
-
-      .fc-col-header-cell.fc-day.fc-day-sat { color:#2e2edf; }
-      .fc-col-header-cell.fc-day.fc-day-sun { color:#b61f1f; }
-      .fc-daygrid-day.fc-day.fc-day-sat { color:#2e2edf; } /* 토요일 */
-      .fc-daygrid-day.fc-day.fc-day-sun { color:#b61f1f; } /* 일요일 */
-
-      .fc-header-toolbar{
-        padding-top: 1em;
-        padding-left: 1em;
-        padding-right: 1em;
-      }
-
-      .fc-col-header { background-color: #c2d1a3;} /*이친구 만져야함*/
-      
-      .fc-daygrid-event{
-        pointer-events: none; /*클릭 방지*/
-        /*cursor: default;*/
-        color: 'white';
-      }
-
-      /*dot event도 all-day처럼*/
-      .fc-daygrid-event.fc-daygrid-dot-event{background-color: #C4D79B;}
-
-      /*하이퍼링크 글자색 변경*/
-      .fc-daygrid-event:link {color: white}
-      .fc-daygrid-event:visited {color: white}
-
-      .fc-daygrid-event-dot{ display: none; }
-      .fc-event-time{
-        padding-left: 4px;
-        font-weight: normal;
-      }
-      .fc-daygrid-day-events {font-weight: bold;}
-
-
-      :root{
-        --fc-button-bg-color :  #c2d1a3 ; /*툴바 버튼 컬러*/
-        --fc-button-hover-bg-color: #9bb16f ; /*툴바 버튼 위에 갖다댔을 때 컬러*/
-        --fc-button-active-bg-color: #75884f; /*툴바 선택된 버튼 컬러*/
-        --fc-today-bg-color: rgba(196, 215, 155, 0.25);/*오늘 컬러*/
-      }
-
-
-
-    </style>
   </head>
 
   <body>
